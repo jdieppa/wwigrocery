@@ -1,0 +1,14 @@
+angular header/footer
+https://scotch.io/courses/build-your-first-angular-website/creating-an-angular-header-and-footer#toc-creating-header-and-footer-the-right-way-components-
+
+bootstrap nav flexbox
+https://stackoverflow.com/questions/19733447/bootstrap-navbar-with-left-center-or-right-aligned-items
+
+bootstrap themes - bootswatch
+https://www.bootstrapcdn.com/bootswatch/?theme=4
+
+aligning icons
+https://css-tricks.com/tips-aligning-icons-text/
+
+json data service
+https://www.metaltoad.com/blog/angular-5-making-api-calls-httpclient-service

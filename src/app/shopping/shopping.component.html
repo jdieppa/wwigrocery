@@ -1,0 +1,37 @@
+<div class="row m-2">
+  <div class="col-sm-4">Showing {{ shownitems.length }} of {{products.items.length}} items in <span class="category">{{products.name}}</span></div>
+  <div class="col-sm-4">In Stock Only: <input type="checkbox" [(ngModel)]="inStockOnly" (change)="filterInStock()" ></div>
+  <div class="col-sm-4">Sort by:
+    <select [(ngModel)]='sortBy' (change)='sortProducts()'>
+      <option>None</option>
+      <option>Price</option>
+      <option>Alphabetical</option>
+      <option>Rating</option>
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <div *ngFor="let category of categories; let i = index">
+      <a data-toggle="collapse" href="#subc-{{i}}" role="button" aria-expanded="false" aria-controls="collapseExample">{{category.category}}</a>
+      <div class="collapse ml-4" id="subc-{{i}}">
+        <span *ngFor="let sc of category.subcategories; let j = index"><a href (click)="showProducts(sc.name); false">{{sc.name}}</a><br></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="row">
+      <div *ngFor="let product of shownitems" class="product text-center border p-2 m-1">
+        <a href="/product/{{product.name}}">{{product.name}}<br>
+        <img src="{{product.imagelink}}" alt="{{product.name}}" class="border p-1"></a><br>
+        <div class="d-flex">
+          <span class="mr-auto">{{product.price | currency}}</span>
+          <button class="btn btn-sm btn-outline-primary" (click)="addToCart(product)">Add</button>
+        </div>
+        Stock: {{product.stock}}, Rating: {{product.rating}}
+      </div>
+    </div>
+  </div>
+</div>

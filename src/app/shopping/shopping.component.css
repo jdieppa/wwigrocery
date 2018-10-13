@@ -1,0 +1,13 @@
+img {
+  max-height: 100px;
+  max-width: 100px;
+}
+.product {
+  width: 190px;
+  min-height: 155px;
+
+}
+
+.category {
+  font-weight: bold;
+}

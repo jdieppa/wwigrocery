@@ -1,0 +1,16 @@
+<div class="text-center">
+  <h1>{{product.name}}</h1>
+  <img src="{{product.imagelink}}" alt="{{product.name}}">
+  <p>
+    Price: {{product.price | currency : USD}}<br>
+    Rating: {{product.rating}}<br>
+    Stock Status: {{product.stock}}<br>
+    Description: {{product.description}}
+  </p>
+
+  <label>Qty: <input type="number" min="0" max="99" name="quantity" [(ngModel)]="quantity" id="quantity"></label>
+  <div class="text-center m-3">
+    <button class="btn btn-lg btn-block btn-warning" (click)="addToCart()">Add</button>
+    <a href="javascript:window.history.back()" class="btn btn-lg btn-block btn-primary" role="button">Back</a>
+  </div>
+</div>

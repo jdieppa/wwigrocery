@@ -1,0 +1,12 @@
+.carousel-item { height: 200px; }
+.carousel-item img { height:100%; width:auto; margin: 0 auto; }
+.carousel-indicators {bottom:-10px;margin:0;padding:0;}
+.carousel-indicators li { background-color: #aaa; }
+.carousel-indicators .active { background-color: #666; }
+
+@media screen and (min-width: 768px) {
+  .carousel-item { height: 400px; }
+}
+@media screen and (min-width: 2560px) {
+  .carousel-item { height: 600px; }
+}

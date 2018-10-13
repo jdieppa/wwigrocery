@@ -1,0 +1,10 @@
+img {height:60px; float:left; padding-right:0.5rem;}
+.total { font-weight:bold; }
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}

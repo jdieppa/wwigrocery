@@ -1,0 +1,150 @@
+<div *ngIf="cart.items.length">
+  <div class="clearfix">
+    <h1 class="float-left">Cart</h1>
+    <button (click)="emptyCart()" class="btn btn-sm btn-primary float-right">Empty Cart</button>
+  </div>
+
+  <form (ngSubmit)="preSubmit(); f.form.valid && onSubmit()" #f="ngForm">
+
+    <div class="row">
+      <div class="col-lg-6">
+        <table class="table table-striped">
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+          <tr *ngFor="let item of cart.items">
+            <td><a href="/product/{{item.product.name}}"><img src="{{item.product.imagelink}}" alt="{{item.product.name}}">{{item.product.name}}</a></td>
+            <td>{{item.product.price | currency: USD}}</td>
+            <td><input type="number" min="1" max="99" [(ngModel)]="item.quantity" name="{{item.product.name}}-quantity" (change)="updateQuantity(item)"></td>
+            <td>{{item.product.price * item.quantity | currency: USD}}</td>
+            <td><button class="btn btn-sm btn-outline-primary" (click)="removeItem(item)">Remove</button></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="text-right total">Subtotal:</td>
+            <td colspan="2">{{cart.subTotal | currency: USD}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="col-lg-6">
+        <p>Enter Shipping Details:</p>
+        <input id="name" name="name" class="form-control" required [(ngModel)]="person.name" #name="ngModel"
+          placeholder="Name">
+        <div *ngIf="name.invalid && (name.dirty || name.touched || submitted)" class="text-danger ml-3">
+          <div *ngIf="name.errors.required">
+            Name is required.
+          </div>
+        </div>
+
+        <input id="address" name="address" class="form-control" required [(ngModel)]="person.address" #address="ngModel"
+          placeholder="Address">
+        <div *ngIf="address.invalid && (address.dirty || address.touched || submitted)" class="text-danger ml-3">
+          <div *ngIf="address.errors.required">
+            Address is required.
+          </div>
+        </div>
+
+        <input id="city" name="city" class="form-control" required [(ngModel)]="person.city" #city="ngModel"
+          placeholder="City">
+        <div *ngIf="city.invalid && (city.dirty || city.touched || submitted)" class="text-danger ml-3">
+          <div *ngIf="city.errors.required">
+            City is required.
+          </div>
+        </div>
+
+        <input id="phone" name="phone" class="form-control" required [(ngModel)]="person.phone" #phone="ngModel"
+          placeholder="Phone">
+        <div *ngIf="phone.invalid && (phone.dirty || phone.touched || submitted)" class="text-danger ml-3">
+          <div *ngIf="phone.errors.required">
+            Phone is required.
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="text-center m-3">
+      <button class="btn btn-lg btn-block btn-warning" type="submit">Checkout</button>
+    </div>
+  </form>
+
+</div>
+
+
+<div *ngIf="!cart.items.length">
+  <h1>Cart</h1>
+  <div class="text-center m-3">
+    <h3>Nothing in cart</h3>
+    <a href="/shopping" class="btn btn-lg btn-block btn-warning" role="button">Shop Now!</a>
+  </div>
+</div>
+
+
+<!-- Button trigger modal -->
+<button id="checkoutModalButton" type="button" class="btn btn-primary btn-lg d-none" data-toggle="modal" data-target="#checkoutModal">
+  Launch
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutDetails" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="checkoutDetails">Checkout Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Cost</h4>
+        <table class="table">
+          <tr>
+            <th>Subtotal:</th>
+            <td>{{cart.subTotal | currency: USD}}</td>
+          </tr>
+          <tr>
+            <th>Tax:</th>
+            <td>{{cart.tax | currency: USD}}</td>
+          </tr>
+          <tr>
+            <th>Shipping:</th>
+            <td>{{cart.shipping | currency: USD}}</td>
+          </tr>
+          <tr>
+            <th>Total:</th>
+            <td>{{cart.total | currency: USD}}</td>
+          </tr>
+        </table>
+
+        <h4>Shipping Details</h4>
+        <table class="table">
+          <tr>
+            <th>Name:</th>
+            <td>{{person.name}}</td>
+          </tr>
+          <tr>
+            <th>Address:</th>
+            <td>{{person.address}}</td>
+          </tr>
+          <tr>
+            <th>City:</th>
+            <td>{{person.city}}</td>
+          </tr>
+          <tr>
+            <th>Phone:</th>
+            <td>{{person.phone}}</td>
+          </tr>
+        </table>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" disabled>Continue</button>
+      </div>
+    </div>
+  </div>
+</div>

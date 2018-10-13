@@ -1,0 +1,43 @@
+.parallax {
+  background-image: url("/assets/berry-blue-blueberries-70862.jpg");
+  min-height: 500px;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax1 {
+  background-image: url("/assets/agricultural-agriculture-branch-1467753.jpg");
+  min-height: 800px;
+}
+.parallax2 {
+  background-image: url("/assets/beautiful-bloom-blooming-1462246.jpg");
+  min-height: 600px;
+}
+.parallax3 {
+  background-image: url("/assets/baked-biscuits-blur-1476330.jpg");
+  min-height: 400px;
+}
+.parallax4 {
+  background-image: url("/assets/animal-avian-beak-1462052.jpg");
+  min-height: 800px;
+}
+
+
+.spacer1 {
+  height:200px;
+  font-size:36px;
+  vertical-align: middle;
+  line-height: 200px;
+  text-align: center;
+}
+
+.spacer1 span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+
